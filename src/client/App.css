@@ -1,18 +1,19 @@
 header{
-  background-color: aqua;
+  background-color: #FAD02C;
   width: 100vw;
-  height: 85px;
+  height: 105px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-/* header img{
+header img{
   height: 100%;
-  mix-blend-mode: multiply; if white background needs to be removed
-} for when I get a logo*/
+  mix-blend-mode: multiply; 
+} 
 
 nav{
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  margin: 5px;
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-// import logo from '../assets/xyz'
+import logo from '../assets/goldLogo.png'
 import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <header>
-        {/* <img src={logo}/> */}
+        <img src={logo}/>
         <nav>
             <Link to='/'>Login</Link>
             <Link to='/home'>Home</Link>

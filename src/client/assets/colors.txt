@@ -1,0 +1,3 @@
+yellow= #FAD02C
+grey/silver= #5C5C5C
+good black = #232323
