@@ -13,4 +13,4 @@ const Playlist = db.define('playlist', {
   date: DataTypes.DATE
 })
 
-module.exports = User
+module.exports = Playlist

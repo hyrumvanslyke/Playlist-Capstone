@@ -1,7 +1,7 @@
 const db = require('../util/database')
 const {DataTypes} = require('sequelize')
 
-const Songs = db.define('songs', {
+const Song = db.define('songs', {
   id: {
     primaryKey: true,
     allowNull: false,
@@ -12,4 +12,4 @@ const Songs = db.define('songs', {
 
 })
 
-module.exports = User
+module.exports = Song

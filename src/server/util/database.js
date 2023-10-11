@@ -4,4 +4,4 @@ const {CONNECTION_STRING} = process.env
 
 const db = new Sequelize(CONNECTION_STRING)
 
-module.export=db
+module.exports = db
