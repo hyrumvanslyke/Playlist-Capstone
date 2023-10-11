@@ -8,36 +8,38 @@ import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
 import { useState } from "react";
+
 function App() {
+  // const [results, setResults] = useState([])
 
-  const searchShazam = async (query) => {
-    try {
-      const response = await axios
-      .get(
-        `https://shazam.p.rapidapi.com/search?term=${query}`,
-        {
-          headers: {
-            'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
-            'X-RapidAPI-Key': '50fa08adb9mshceb23de2d376347p19a954jsnadd1ab3fe69f', 
-          },
-        }
-      );
+  // const searchShazam = async (query) => {
+  //   try {
+  //     const response = await axios
+  //     .get(
+  //       `https://shazam.p.rapidapi.com/search?term=${query}`,
+  //       {
+  //         headers: {
+  //           'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
+  //           'X-RapidAPI-Key': `${SHAZAM_KEY}`, 
+  //         },
+  //       }
+  //     );
 
-      setResults(response.data.tracks.hits);
-    } catch (error) {
-      console.error('Error searching Shazam API:', error);
-    }
-  };
+  //     setResults(response.data.tracks.hits);
+  //   } catch (error) {
+  //     console.error('Error searching Shazam API:', error);
+  //   }
+  // };
 
   return (
     <div className="App">
       <Header />
-      <SearchBar onSearch={searchShazam} />
+      {/* <SearchBar onSearch={searchShazam} />
       <ul>
         {results.map((result) => (
           <li key={result.track.key}>{result.track.title}</li>
         ))}
-      </ul>
+      </ul> */}
       <Routes>
         <Route path="/" element={<AuthScreen />} />
         <Route path="/home" element={<HomeScreen />} />

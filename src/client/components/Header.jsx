@@ -1,16 +1,46 @@
 import React from 'react'
-import logo from '../assets/goldLogo.png'
-import { Link } from 'react-router-dom'
+import logo from '../assets/noBackLogo.png'
+import { Link, useLocation } from 'react-router-dom'
+import '../componentStyles/Header.css'
 const Header = () => {
+    const location = useLocation()
   return (
     <header>
-        <img src={logo}/>
-        <nav>
-            <Link to='/'>Login</Link>
-            <Link to='/home'>Home</Link>
-            <Link to='/UserPlaylists/:1'>User Playlists</Link>
-            <Link to='/Playlist/:2'>Playlist</Link>
-        </nav>
+        {location.pathname !== '/UserPlaylists/:UserId' && <img src={logo}/>}
+        {location.pathname === '/' && null}
+        {location.pathname === '/home' && (
+            <>
+          <div className="search-bar-container">
+            <input type="text" placeholder="🎧 Search for songs to add 🎧" />
+          </div>
+        
+         <div className="nav-buttons">
+          <Link to="/UserPlaylists/:UserId" className="nav-button">
+            My Playlists
+          </Link>
+          <Link to="/" className="nav-button">
+            Logout
+          </Link>
+        </div>
+        </>
+        )}
+        {location.pathname === '/UserPlaylists/:UserId' && (
+            <>
+            <div className='userplaylist'>
+            <img src={logo}/> 
+          <div className="search-bar-container">
+            <input type="text" placeholder="🎵 Search your playlists 🎵" />
+          </div>
+          <img src={logo}/>
+          </div>
+        
+         <div className="nav-buttons">
+          <Link to="/home" className="nav-button">
+            Back to Home
+          </Link>
+        </div>
+        </>
+        )}
     </header>
   )
 }

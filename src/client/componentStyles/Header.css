@@ -1,0 +1,31 @@
+header{
+    background-color: #FAD02C;
+    width: 100vw;
+    height: 105px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header img{
+    height: 95%;
+    margin-left: 5px;
+    margin-right: 5px;
+  } 
+  
+  .nav-button {
+    display: flex;
+    gap: 10px;
+    margin: 5px;
+    padding: 10px;
+  }
+  input{
+    text-align: center;
+  }
+  .userplaylist{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
