@@ -1,15 +1,14 @@
-const db = require('../util/database')
-const {DataTypes} = require('sequelize')
+const db = require("../util/database");
+const { DataTypes } = require("sequelize");
 
-const Song = db.define('songs', {
+const Song = db.define("songs", {
   id: {
     primaryKey: true,
     allowNull: false,
     autoIncrement: true,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   ShazamId: DataTypes.INTEGER,
+});
 
-})
-
-module.exports = Song
+module.exports = Song;

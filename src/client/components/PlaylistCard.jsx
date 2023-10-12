@@ -1,5 +1,5 @@
-import React from 'react';
-import '../componentStyles/PlaylistCard.css'
+import React from "react";
+import "../componentStyles/PlaylistCard.css";
 
 const PlaylistCard = ({ playlist }) => {
   const { title, img, date } = playlist;

@@ -1,11 +1,10 @@
-
-import React, { useState } from 'react';
-import '../componentStyles/SongCard.css'; 
+import React, { useState } from "react";
+import "../componentStyles/SongCard.css";
 
 const SongCard = ({ song, onAddToPlaylist, playlists }) => {
   const { id, title, artist, imageUrl } = song;
 
-  const [selectedPlaylistId, setSelectedPlaylistId] = useState('');
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState("");
 
   const handleAddToPlaylist = () => {
     if (selectedPlaylistId) {
@@ -16,7 +15,11 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
   return (
     <div className="song-card">
       <div className="song-image-container">
-        <img src={imageUrl} alt={`${title} by ${artist}`} className="song-image" />
+        <img
+          src={imageUrl}
+          alt={`${title} by ${artist}`}
+          className="song-image"
+        />
       </div>
       <div className="song-info">
         <h3>{title}</h3>
