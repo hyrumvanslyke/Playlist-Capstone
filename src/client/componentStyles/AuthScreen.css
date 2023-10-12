@@ -49,3 +49,9 @@
     display: flex;
     flex-direction: row;
   }
+
+  .page-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

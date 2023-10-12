@@ -45,7 +45,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={state.token ? <AuthScreen /> : <Navigate to="/home" />}
+          element={!state.token ? <AuthScreen /> : <Navigate to="/home" />}
         />
         <Route
           path="/home"

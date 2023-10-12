@@ -17,7 +17,7 @@ let register = ()=>{
     }
     axios.post('/api/register', newUser)
     .then((res)=>{
-      dispatch({type: 'LOGIN', payload: res.date})
+      dispatch({type: 'LOGIN', payload: res.data})
         console.log(res)
     })
     .catch((err)=>{
@@ -31,6 +31,7 @@ let login = () => {
     }
     axios.post('/api/login', userInfo)
     .then((res) => {
+      dispatch({type: 'LOGIN', payload: res.data})
       console.log(res)
     })
     .catch((err) => {
@@ -41,6 +42,7 @@ let login = () => {
 
   return (
     <>
+    <div className='page-div'>
      <div className='musicnotes'>
     <img src={leftNote} />
     </div>
@@ -67,6 +69,7 @@ let login = () => {
     </div>
     <div className='musicnotes'>
     <img src={rightNote} />
+    </div>
     </div>
     </>
   );

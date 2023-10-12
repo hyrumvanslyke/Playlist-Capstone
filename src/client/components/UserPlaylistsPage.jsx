@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import '../componentStyles/UserPlaylistsPage.css'; 
-
+import { Link } from 'react-router-dom';
+import leftNote from '../assets/music-left.png'
+import rightNote from '../assets/music-right.png'
 const UserPlaylistsPage = () => {
   // Placeholder data
   const playlistData = [
     { id: 1, title: 'Songs 1', img: '🐴', date: 'jan, 4th 2012' },
     { id: 2, title: 'Songs 2', img: '🔆', date: 'jun, 7th 2019' },
     { id: 3, title: 'Songs 3', img: '🙃', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '😁', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '😂', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤣', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '😃', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '😆', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '😴', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤯', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤑', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤪', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤕', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤖', date: 'feb, 14th 2002' },
-    { id: 3, title: 'Songs 3', img: '🤢', date: 'feb, 14th 2002' },
+    { id: 4, title: 'Songs 3', img: '😁', date: 'feb, 14th 2002' },
+    { id: 5, title: 'Songs 3', img: '😂', date: 'feb, 14th 2002' },
+    { id: 6, title: 'Songs 3', img: '🤣', date: 'feb, 14th 2002' },
+    { id: 7, title: 'Songs 3', img: '😃', date: 'feb, 14th 2002' },
+    { id: 8, title: 'Songs 3', img: '😆', date: 'feb, 14th 2002' },
+    { id: 9, title: 'Songs 3', img: '😴', date: 'feb, 14th 2002' },
+    { id: 10, title: 'Songs 3', img: '🤯', date: 'feb, 14th 2002' },
+    { id: 11, title: 'Songs 3', img: '🤑', date: 'feb, 14th 2002' },
+    { id: 12, title: 'Songs 3', img: '🤪', date: 'feb, 14th 2002' },
+    { id: 13, title: 'Songs 3', img: '🤕', date: 'feb, 14th 2002' },
+    { id: 14, title: 'Songs 3', img: '🤖', date: 'feb, 14th 2002' },
+    { id: 15, title: 'Songs 3', img: '🤢', date: 'feb, 14th 2002' },
   ];
 
 
@@ -35,11 +37,17 @@ const UserPlaylistsPage = () => {
   };
 
   return (
+    <>
     <div className="playlists-container">
       <header className="header">
-        <h1>User Playlists</h1>
+      <Link to="/home" className="nav-button">
+            🔙
+          </Link>
       </header>
-
+      <div className='page-div'>
+     <div className='musicnotes'>
+    <img src={leftNote} />
+    </div>
       <div className="playlist-cards-container">
         {currentPlaylists.map((playlist) => (
           <div key={playlist.id} className="playlist-card">
@@ -49,7 +57,10 @@ const UserPlaylistsPage = () => {
           </div>
         ))}
       </div>
-
+      <div className='musicnotes'>
+    <img src={rightNote} />
+    </div>
+    </div>
       <footer className="footer">
         <div className="pagination">
           {Array.from({ length: Math.ceil(playlistData.length / playlistsPerPage) }, (_, index) => (
@@ -60,7 +71,10 @@ const UserPlaylistsPage = () => {
         </div>
       </footer>
     </div>
+    </>
   );
+  
+
 };
 
 export default UserPlaylistsPage;

@@ -26,6 +26,7 @@ const Header = () => {
         )}
         {location.pathname === '/UserPlaylists/:UserId' && (
             <>
+            <div></div>
             <div className='userplaylist'>
             <img src={logo}/> 
           <div className="search-bar-container">
@@ -33,12 +34,6 @@ const Header = () => {
           </div>
           <img src={logo}/>
           </div>
-        
-         <div className="nav-buttons">
-          <Link to="/home" className="nav-button">
-            Back to Home
-          </Link>
-        </div>
         </>
         )}
     </header>
