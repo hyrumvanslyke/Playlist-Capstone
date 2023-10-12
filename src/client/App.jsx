@@ -1,4 +1,4 @@
-import { Route,  Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import AuthScreen from "./components/AuthScreen";
 import HomeScreen from "./components/HomeScreen";
@@ -7,9 +7,11 @@ import PlaylistDisplay from "./components/PlaylistDisplay";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "./state/AuthContext";
 
 function App() {
+  const { state } = useContext(AuthContext);
   // const [results, setResults] = useState([])
 
   // const searchShazam = async (query) => {
@@ -20,7 +22,7 @@ function App() {
   //       {
   //         headers: {
   //           'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
-  //           'X-RapidAPI-Key': `${SHAZAM_KEY}`, 
+  //           'X-RapidAPI-Key': `${SHAZAM_KEY}`,
   //         },
   //       }
   //     );
@@ -41,10 +43,22 @@ function App() {
         ))}
       </ul> */}
       <Routes>
-        <Route path="/" element={<AuthScreen />} />
-        <Route path="/home" element={<HomeScreen />} />
-        <Route path="/UserPlaylists/:UserId" element={<UserPlaylistsPage />} />
-        <Route path="/Playlist/:PlaylistId" element={<PlaylistDisplay />} />
+        <Route
+          path="/"
+          element={state.token ? <AuthScreen /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/home"
+          element={state.token ? <HomeScreen /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/UserPlaylists/:UserId"
+          element={state.token ? <UserPlaylistsPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/Playlist/:PlaylistId"
+          element={state.token ? <PlaylistDisplay /> : <Navigate to="/" />}
+        />
       </Routes>
     </div>
   );

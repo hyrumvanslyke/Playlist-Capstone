@@ -1,13 +1,15 @@
 
-import React, {  useRef } from 'react';
+import React, {  useRef, useContext } from 'react';
 import '../componentStyles/AuthScreen.css'; 
 import logo from '../assets/noBackLogo.png'
 import leftNote from '../assets/music-left.png'
 import rightNote from '../assets/music-right.png'
 import axios from 'axios';
+import AuthContext from '../state/AuthContext';
 const AuthScreen = () => {
   const usernameRef = useRef()
   const passRef = useRef()
+  const {dispatch} = useContext(AuthContext)
 let register = ()=>{
     let newUser = {
         username: usernameRef.current.value,
@@ -15,6 +17,7 @@ let register = ()=>{
     }
     axios.post('/api/register', newUser)
     .then((res)=>{
+      dispatch({type: 'LOGIN', payload: res.date})
         console.log(res)
     })
     .catch((err)=>{
