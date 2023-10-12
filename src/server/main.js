@@ -5,6 +5,8 @@ const app = express();
 const User = require('./models/Users.js')
 const Playlist = require("./models/Playlist.js")
 const Song = require('./models/Songs.js')
+const { register, login } = require('./controllers/authCrtl')
+
 app.use(express.json());
 
 User.hasMany(Playlist)
@@ -13,7 +15,8 @@ Playlist.belongsTo(User)
 Playlist.hasMany(Song)
 Song.belongsTo(Playlist)
 
-app.post('/api/register')
+app.post('/api/register', register)
+app.post('./api/login', login)
 
 db.sync();
 
