@@ -38,6 +38,18 @@ const HomeScreen = () => {
       console.error("Error searching Shazam API:", error);
     }
   };
+  const [currentPage, setCurrentPage] = useState(1);
+  const songsPerPage = 6;
+
+  const indexOfLastSong = currentPage * songsPerPage;
+  const indexOfFirstSong = indexOfLastSong - songsPerPage;
+  const currentSong = songData.slice(
+    indexOfFirstSong,
+    indexOfLastSong
+  );
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <>
@@ -52,13 +64,24 @@ const HomeScreen = () => {
               <SongCard song={result} key={result.key}>{result.heading.title}</SongCard>
             ))}
           </ul>
-          {/* {songData.map((song) => (
-            <SongCard key={song.id} song={song} />
-          ))} */}
+          <div className="pagination">
+            {Array.from(
+              { length: Math.ceil(songData.length / songsPerPage) },
+              (_, index) => (
+                <button
+                  key={index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              )
+            )}
+          </div>
         </div>
         <div className="musicnotes">
           <img src={rightNote} />
         </div>
+       
       </div>
     </>
   );

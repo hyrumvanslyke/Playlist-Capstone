@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import leftNote from "../assets/music-left.png";
 import rightNote from "../assets/music-right.png";
 import PlaylistCard from "./PlaylistCard";
+import { useNavigate } from 'react-router-dom';
 const UserPlaylistsPage = () => {
   const playlistData = [
     { id: 1, title: "Songs 1", img: "🐴", date: "jan, 4th 2012" },
@@ -22,6 +23,10 @@ const UserPlaylistsPage = () => {
     { id: 14, title: "Songs 14", img: "🤖", date: "feb, 14th 2002" },
     { id: 15, title: "Songs 15", img: "🤢", date: "feb, 14th 2002" },
   ];
+  const navigate = useNavigate()
+  const toPlaylist = ()=>{
+    navigate("/Playlist/:PlaylistId")
+  }
 
   const [currentPage, setCurrentPage] = useState(1);
   const playlistsPerPage = 3;
@@ -35,32 +40,6 @@ const UserPlaylistsPage = () => {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-  };
-
-  const [playlists, setPlaylists] = useState([
-    { id: 1, name: "My Playlist 1", songs: [] },
-    { id: 2, name: "My Playlist 2", songs: [] },
-  ]);
-  {
-    currentPlaylists.map((playlist) => (
-      <PlaylistCard key={playlist.id} playlist={playlist} />
-    ));
-  }
-
-  const addSongToPlaylist = (songId, playlistId) => {
-    const selectedSong = songs.find((song) => song.id === songId);
-    const selectedPlaylist = playlists.find(
-      (playlist) => playlist.id === playlistId
-    );
-
-    setPlaylists((prevPlaylists) =>
-      prevPlaylists.map((playlist) =>
-        playlist.id === selectedPlaylist.id
-          ? { ...playlist, songs: [...playlist.songs, selectedSong] }
-          : playlist
-      )
-    );
-    console.log(`Added "${selectedSong.title}" to "${selectedPlaylist.name}"`);
   };
 
   return (
@@ -77,7 +56,7 @@ const UserPlaylistsPage = () => {
           </div>
           <div className="playlist-cards-container">
             {currentPlaylists.map((playlist) => (
-              <PlaylistCard key={playlist.id} playlist={playlist} />
+              <PlaylistCard onClick= {toPlaylist} key={playlist.id} playlist={playlist} />
             ))}
           </div>
           <div className="musicnotes">
