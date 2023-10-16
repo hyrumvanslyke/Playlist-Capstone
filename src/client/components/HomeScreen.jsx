@@ -32,7 +32,7 @@ const HomeScreen = () => {
           },
         }
       );
-
+        console.log(response.data)
       setResults(response.data.tracks.hits);
     } catch (error) {
       console.error("Error searching Shazam API:", error);
@@ -49,12 +49,12 @@ const HomeScreen = () => {
           <SearchBar onSearch={searchShazam} />
           <ul>
             {results.map((result) => (
-              <li key={result.track.key}>{result.track.title}</li>
+              <SongCard song={result} key={result.key}>{result.heading.title}</SongCard>
             ))}
           </ul>
-          {songData.map((song) => (
+          {/* {songData.map((song) => (
             <SongCard key={song.id} song={song} />
-          ))}
+          ))} */}
         </div>
         <div className="musicnotes">
           <img src={rightNote} />

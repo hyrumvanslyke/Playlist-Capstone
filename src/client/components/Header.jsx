@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../state/AuthContext";
 import { useContext, useState } from "react";
 import "../componentStyles/Header.css";
-import SearchBar from "./SearchBar";
 const Header = () => {
+  const dispatch = useContext(AuthContext)
   const logout = () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });

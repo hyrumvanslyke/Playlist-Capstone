@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../componentStyles/SongCard.css";
 
 const SongCard = ({ song, onAddToPlaylist, playlists }) => {
-  const { id, title, artist, imageUrl } = song;
+  // const { id, title, artist, imageUrl } = song;
 
   const [selectedPlaylistId, setSelectedPlaylistId] = useState("");
 
@@ -16,14 +16,14 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
     <div className="song-card">
       <div className="song-image-container">
         <img
-          src={imageUrl}
-          alt={`${title} by ${artist}`}
+          src={song.images.default}
+          alt={`${song.heading.title} by ${song.artist}`}
           className="song-image"
         />
       </div>
       <div className="song-info">
-        <h3>{title}</h3>
-        <p>{artist}</p>
+        <h3>{song.heading.title}</h3>
+        <p>{song.artist}</p>
         <div className="add-to-playlist">
           <select onChange={(e) => setSelectedPlaylistId(e.target.value)}>
             <option value="" disabled selected>
