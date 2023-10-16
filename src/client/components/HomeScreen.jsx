@@ -32,25 +32,25 @@ const HomeScreen = () => {
           },
         }
       );
-        console.log(response.data)
+      console.log(response.data);
       setResults(response.data.tracks.hits);
     } catch (error) {
       console.error("Error searching Shazam API:", error);
     }
   };
+
   const [currentPage, setCurrentPage] = useState(1);
-  const songsPerPage = 6;
+  const songsPerPage = 4;
 
   const indexOfLastSong = currentPage * songsPerPage;
   const indexOfFirstSong = indexOfLastSong - songsPerPage;
-  const currentSong = songData.slice(
-    indexOfFirstSong,
-    indexOfLastSong
-  );
+  const currentSong = results.slice(indexOfFirstSong, indexOfLastSong);
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
-
+  let buttonDisplay = Array.from(Array(Math.ceil(results.length/ songsPerPage)).keys()).map((num)=>{
+    return <button onClick={()=> handlePageChange(num +1)}> {num + 1} </ button>
+  })
   return (
     <>
       <div className="page-div">
@@ -60,12 +60,15 @@ const HomeScreen = () => {
         <div className="song-container">
           <SearchBar onSearch={searchShazam} />
           <ul>
-            {results.map((result) => (
-              <SongCard song={result} key={result.key}>{result.heading.title}</SongCard>
+            {currentSong.map((result) => (
+              <SongCard song={result} key={result.key}>
+                {result.heading.title}
+              </SongCard>
             ))}
           </ul>
           <div className="pagination">
-            {Array.from(
+            {buttonDisplay}
+            {/* {Array.from(
               { length: Math.ceil(songData.length / songsPerPage) },
               (_, index) => (
                 <button
@@ -75,13 +78,12 @@ const HomeScreen = () => {
                   {index + 1}
                 </button>
               )
-            )}
+            )} */}
           </div>
         </div>
         <div className="musicnotes">
           <img src={rightNote} />
         </div>
-       
       </div>
     </>
   );

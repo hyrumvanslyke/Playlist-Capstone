@@ -5,7 +5,7 @@ import AuthContext from "../state/AuthContext";
 import { useContext } from "react";
 import "../componentStyles/Header.css";
 const Header = () => {
-  const dispatch = useContext(AuthContext);
+  const {dispatch} = useContext(AuthContext);
   const logout = () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });

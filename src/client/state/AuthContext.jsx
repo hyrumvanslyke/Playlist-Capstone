@@ -5,6 +5,7 @@ const intialState = {
   token: null,
   username: null,
   id: null,
+  playlists: []
 };
 
 const AuthContext = createContext();

@@ -29,11 +29,11 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
             <option value="" disabled selected>
               Select Playlist
             </option>
-            {/* {playlists.map((playlist) => (
+            {playlists.map((playlist) => (
               <option key={playlist.id} value={playlist.id}>
                 {playlist.name}
               </option>
-            ))} */}
+            ))}
           </select>
           <button onClick={handleAddToPlaylist}>Add to Playlist</button>
         </div>

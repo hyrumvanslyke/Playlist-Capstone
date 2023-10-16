@@ -23,10 +23,6 @@ const UserPlaylistsPage = () => {
     { id: 14, title: "Songs 14", img: "🤖", date: "feb, 14th 2002" },
     { id: 15, title: "Songs 15", img: "🤢", date: "feb, 14th 2002" },
   ];
-  const navigate = useNavigate()
-  const toPlaylist = ()=>{
-    navigate("/Playlist/:PlaylistId")
-  }
 
   const [currentPage, setCurrentPage] = useState(1);
   const playlistsPerPage = 3;
@@ -56,7 +52,7 @@ const UserPlaylistsPage = () => {
           </div>
           <div className="playlist-cards-container">
             {currentPlaylists.map((playlist) => (
-              <PlaylistCard onClick= {toPlaylist} key={playlist.id} playlist={playlist} />
+              <PlaylistCard key={playlist.id} playlist={playlist} />
             ))}
           </div>
           <div className="musicnotes">
