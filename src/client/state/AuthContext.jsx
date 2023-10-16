@@ -1,5 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 const intialState = {
   token: null,
   username: null,
@@ -45,7 +46,7 @@ useEffect(()=>{
       console.log(err)
     })
   }
-})
+}, [])
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {props.children}

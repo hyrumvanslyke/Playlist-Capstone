@@ -2,6 +2,10 @@ import React from "react";
 import leftNote from "../assets/music-left.png";
 import rightNote from "../assets/music-right.png";
 import SongCard from "./SongCard";
+import { useState } from "react";
+import SearchBar from "./SearchBar";
+import axios from "axios";
+import { shazamKey } from "../../../Config";
 const HomeScreen = () => {
   const songData = [
     { id: 1, title: "redrum", artist: "your mom", imageUrl: "nothanks" },
@@ -15,6 +19,25 @@ const HomeScreen = () => {
     { id: 9, title: "hehe", artist: "your mom", imageUrl: "nothanks" },
     { id: 10, title: "haha", artist: "your mom", imageUrl: "nothanks" },
   ];
+  const [results, setResults] = useState([]);
+
+  const searchShazam = async (query) => {
+    try {
+      const response = await axios.get(
+        `https://shazam.p.rapidapi.com/search?term=${query}`,
+        {
+          headers: {
+            "X-RapidAPI-Host": "shazam-core7.p.rapidapi.com",
+            "X-RapidAPI-Key": shazamKey,
+          },
+        }
+      );
+
+      setResults(response.data.tracks.hits);
+    } catch (error) {
+      console.error("Error searching Shazam API:", error);
+    }
+  };
 
   return (
     <>
@@ -23,6 +46,12 @@ const HomeScreen = () => {
           <img src={leftNote} />
         </div>
         <div className="song-container">
+          <SearchBar onSearch={searchShazam} />
+          <ul>
+            {results.map((result) => (
+              <li key={result.track.key}>{result.track.title}</li>
+            ))}
+          </ul>
           {songData.map((song) => (
             <SongCard key={song.id} song={song} />
           ))}
