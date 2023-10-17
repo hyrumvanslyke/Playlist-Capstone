@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "../componentStyles/SongCard.css";
+import "../../componentStyles/SongCard.css";
 
 const SongCard = ({ song, onAddToPlaylist, playlists }) => {
-  // const { id, title, artist, imageUrl } = song;
 
   const [selectedPlaylistId, setSelectedPlaylistId] = useState("");
 

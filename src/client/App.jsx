@@ -1,9 +1,9 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-import AuthScreen from "./components/AuthScreen";
-import HomeScreen from "./components/HomeScreen";
-import UserPlaylistsPage from "./components/UserPlaylistsPage";
-import PlaylistDisplay from "./components/PlaylistDisplay";
+import AuthScreen from "./components/Auth/AuthScreen";
+import HomeScreen from "./components/Screens/HomeScreen";
+import UserPlaylistsPage from "./components/Screens/UserPlaylistsPage";
+import PlaylistDisplay from "./components/Screens/PlaylistDisplay";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";

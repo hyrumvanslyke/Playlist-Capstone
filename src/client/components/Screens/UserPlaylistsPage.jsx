@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../componentStyles/UserPlaylistsPage.css";
+import "../../componentStyles/UserPlaylistsPage.css";
 import { Link } from "react-router-dom";
-import leftNote from "../assets/music-left.png";
-import rightNote from "../assets/music-right.png";
-import PlaylistCard from "./PlaylistCard";
+import leftNote from "../../assets/music-left.png";
+import rightNote from "../../assets/music-right.png";
+import PlaylistCard from "../Cards/PlaylistCard";
 import { useNavigate } from 'react-router-dom';
 const UserPlaylistsPage = () => {
   const playlistData = [

@@ -1,10 +1,10 @@
 import React, { useRef, useContext } from "react";
-import "../componentStyles/AuthScreen.css";
-import logo from "../assets/noBackLogo.png";
-import leftNote from "../assets/music-left.png";
-import rightNote from "../assets/music-right.png";
+import "../../componentStyles/AuthScreen.css";
+import logo from "../../assets/noBackLogo.png";
+import leftNote from "../../assets/music-left.png";
+import rightNote from "../../assets/music-right.png";
 import axios from "axios";
-import AuthContext from "../state/AuthContext";
+import AuthContext from "../../state/AuthContext";
 const AuthScreen = () => {
   const usernameRef = useRef();
   const passRef = useRef();

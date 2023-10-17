@@ -1,5 +1,5 @@
 import React from "react";
-import "../componentStyles/PlaylistCard.css";
+import "../../componentStyles/PlaylistCard.css";
 import { useNavigate } from "react-router-dom";
 const PlaylistCard = ({ playlist, onClick }) => {
   const { title, img, date } = playlist;

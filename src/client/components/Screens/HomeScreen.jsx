@@ -1,11 +1,11 @@
 import React from "react";
-import leftNote from "../assets/music-left.png";
-import rightNote from "../assets/music-right.png";
-import SongCard from "./SongCard";
+import leftNote from "../../assets/music-left.png";
+import rightNote from "../../assets/music-right.png";
+import SongCard from "../Cards/SongCard";
 import { useState } from "react";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchBar";
 import axios from "axios";
-import { shazamKey } from "../../../Config";
+import { shazamKey } from "../../../../Config";
 const HomeScreen = () => {
   const songData = [
     { id: 1, title: "redrum", artist: "your mom", imageUrl: "nothanks" },
@@ -68,17 +68,6 @@ const HomeScreen = () => {
           </ul>
           <div className="pagination">
             {buttonDisplay}
-            {/* {Array.from(
-              { length: Math.ceil(songData.length / songsPerPage) },
-              (_, index) => (
-                <button
-                  key={index + 1}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              )
-            )} */}
           </div>
         </div>
         <div className="musicnotes">
