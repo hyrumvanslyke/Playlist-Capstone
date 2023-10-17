@@ -12,11 +12,11 @@ import AuthContext from "./state/AuthContext";
 
 function App() {
   const { state } = useContext(AuthContext);
- 
+
   return (
     <div className="App">
       <Header />
-      
+
       <Routes>
         <Route
           path="/"

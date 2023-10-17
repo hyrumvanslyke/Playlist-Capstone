@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import NewPlaylist from "../Playlists/NewPlaylist";
 const PlaylistCard = ({ playlist, onClick }) => {
   const { name, img, createdAt } = playlist;
-  const navigate = useNavigate()
-  const toPlaylist = ()=>{
-    navigate("/Playlist/:PlaylistId")
-  }
-  const date = new Date(createdAt).toLocaleString().split(',')[0]
+  const navigate = useNavigate();
+  const toPlaylist = () => {
+    navigate("/Playlist/:PlaylistId");
+  };
+  const date = new Date(createdAt).toLocaleString().split(",")[0];
 
   return (
     <div onClick={toPlaylist} className="playlist-card">

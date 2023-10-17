@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../../componentStyles/SongCard.css";
 
 const SongCard = ({ song, onAddToPlaylist, playlists }) => {
-
   const [selectedPlaylistId, setSelectedPlaylistId] = useState("");
 
   const handleAddToPlaylist = () => {

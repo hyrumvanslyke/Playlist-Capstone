@@ -7,7 +7,7 @@ import "../componentStyles/Header.css";
 import NewPlaylist from "./Playlists/NewPlaylist";
 const Header = () => {
   const { dispatch } = useContext(AuthContext);
-  const {state} = useContext(AuthContext)
+  const { state } = useContext(AuthContext);
   const logout = () => {
     localStorage.clear();
     dispatch({ type: "LOGOUT" });
@@ -15,12 +15,12 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header >
-      {location.pathname !== "/UserPlaylists/:UserId"  && <img src={logo} />}
+    <header>
+      {location.pathname !== "/UserPlaylists/:UserId" && <img src={logo} />}
       {location.pathname === "/" && null}
       {location.pathname === "/home" && (
         <>
-        <div></div>
+          <div></div>
           <div className="nav-buttons">
             <Link to="/UserPlaylists/:UserId" className="nav-button">
               My Playlists
@@ -32,7 +32,7 @@ const Header = () => {
       )}
       {location.pathname === "/UserPlaylists/:UserId" && (
         <>
-        <div></div>
+          <div></div>
           <div className="userplaylist">
             <img src={logo} />
             <div>{state.username}'s Playlists</div>
@@ -44,7 +44,7 @@ const Header = () => {
       )}
       {location.pathname === "/Playlist/:PlaylistId" && (
         <>
-        <div></div>
+          <div></div>
           <div className="userplaylist">
             <img src={logo} />
             <div>PLAYLIST NAME</div>

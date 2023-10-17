@@ -8,10 +8,10 @@ import AuthContext from "../../state/AuthContext";
 import axios from "axios";
 const UserPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
-  const {state} = useContext(AuthContext)
-  console.log(playlists)
+  const { state } = useContext(AuthContext);
+  console.log(playlists);
   useEffect(() => {
-    let id = state.id
+    let id = state.id;
     axios
       .get(`/api/getPlaylist/${id}`)
       .then((res) => setPlaylists(res.data))

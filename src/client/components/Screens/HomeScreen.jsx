@@ -7,18 +7,6 @@ import SearchBar from "../SearchBar";
 import axios from "axios";
 import { shazamKey } from "../../../../Config";
 const HomeScreen = () => {
-  const songData = [
-    { id: 1, title: "redrum", artist: "your mom", imageUrl: "nothanks" },
-    { id: 2, title: "345", artist: "your mom", imageUrl: "nothanks" },
-    { id: 3, title: "678", artist: "your mom", imageUrl: "nothanks" },
-    { id: 4, title: "145", artist: "your mom", imageUrl: "nothanks" },
-    { id: 5, title: "hello", artist: "your mom", imageUrl: "nothanks" },
-    { id: 6, title: "killing", artist: "your mom", imageUrl: "nothanks" },
-    { id: 7, title: "goodbye", artist: "your mom", imageUrl: "nothanks" },
-    { id: 8, title: "forever", artist: "your mom", imageUrl: "nothanks" },
-    { id: 9, title: "hehe", artist: "your mom", imageUrl: "nothanks" },
-    { id: 10, title: "haha", artist: "your mom", imageUrl: "nothanks" },
-  ];
   const [results, setResults] = useState([]);
 
   const searchShazam = async (query) => {
@@ -48,9 +36,13 @@ const HomeScreen = () => {
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
-  let buttonDisplay = Array.from(Array(Math.ceil(results.length/ songsPerPage)).keys()).map((num)=>{
-    return <button onClick={()=> handlePageChange(num +1)}> {num + 1} </ button>
-  })
+  let buttonDisplay = Array.from(
+    Array(Math.ceil(results.length / songsPerPage)).keys()
+  ).map((num) => {
+    return (
+      <button onClick={() => handlePageChange(num + 1)}> {num + 1} </button>
+    );
+  });
   return (
     <>
       <div className="page-div">
@@ -66,9 +58,7 @@ const HomeScreen = () => {
               </SongCard>
             ))}
           </ul>
-          <div className="pagination">
-            {buttonDisplay}
-          </div>
+          <div className="pagination">{buttonDisplay}</div>
         </div>
         <div className="musicnotes">
           <img src={rightNote} />

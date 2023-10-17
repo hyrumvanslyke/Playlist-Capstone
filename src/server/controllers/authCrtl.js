@@ -59,17 +59,17 @@ module.exports = {
       res.satus(200).send(error);
     }
   },
-  validateToken : async (req, res) =>{
+  validateToken: async (req, res) => {
     let token;
-    try{
-      token = jwt.verify(req.params.savedToken, SECRET)
-    }catch(error){
-      return res.status(401).send(error)
+    try {
+      token = jwt.verify(req.params.savedToken, SECRET);
+    } catch (error) {
+      return res.status(401).send(error);
     }
-    if(token){
-      return res.staus(200).send("success")
-    }else{
-      return res.status(401).send("invalid")
+    if (token) {
+      return res.staus(200).send("success");
+    } else {
+      return res.status(401).send("invalid");
     }
-  }
+  },
 };

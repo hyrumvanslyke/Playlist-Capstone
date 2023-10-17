@@ -6,7 +6,10 @@ const User = require("./models/Users.js");
 const Playlist = require("./models/Playlist.js");
 const Song = require("./models/Songs.js");
 const { register, login, validateToken } = require("./controllers/authCrtl");
-const { createPlaylist, getPlaylist } = require('./controllers/PlaylistControl')
+const {
+  createPlaylist,
+  getPlaylist,
+} = require("./controllers/PlaylistControl");
 
 app.use(express.json());
 
@@ -16,11 +19,11 @@ Playlist.belongsTo(User);
 Playlist.hasMany(Song);
 Song.belongsTo(Playlist);
 
-app.post("/api/createPlaylist", createPlaylist)
+app.post("/api/createPlaylist", createPlaylist);
 app.post("/api/register", register);
 app.post("/api/login", login);
-app.get('/api/validate', validateToken )
-app.get('/api/getPlaylist/:id', getPlaylist)
+app.get("/api/validate", validateToken);
+app.get("/api/getPlaylist/:id", getPlaylist);
 db.sync();
 
 ViteExpress.listen(app, 3000, () => {
