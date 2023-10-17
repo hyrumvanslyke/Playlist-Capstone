@@ -1,24 +1,25 @@
 import React from 'react'
-import { useEffect, useState, useContext } from 'react'
+import { useState, useContext, useRef } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import axios from 'axios'
 import AuthContext from '../../state/AuthContext'
 const NewPlaylist = () => {
-const [name, setName] = useState('')
-const [ img, setImg] = useState('')
-
+// const [name, setName] = useState('')
+// const [ img, setImg] = useState('')
+ const nameRef = useRef()
+ const imgRef = useRef()
 const {state} = useContext(AuthContext)
 
-const nameChangeHandler =(e)=>{
-    setName(e.target.value)
-    console.log(name)
-}
+// const nameChangeHandler =(e)=>{
+//     setName(e.target.value)
+//     console.log(e)
+// }
 
-const imgChangeHandler =(e)=>{
-    setImg(e.target.value)
-    console.log(img)
-}
+// const imgChangeHandler =(e)=>{
+//     setImg(e.target.value)
+//     console.log(img)
+// }
 
 const MySwal = withReactContent(Swal)
 let displayForm = ()=>{
@@ -27,8 +28,8 @@ let displayForm = ()=>{
         showCancelButton: true,
         html: (
             <div>
-                <input type="text" placeholder='name of playlist' onChange={nameChangeHandler}/>
-                <input type="text" placeholder='picture for playlist' onChange={imgChangeHandler}/>
+                <input type="text"  placeholder='name of playlist' ref={nameRef}/>
+                <input type="text"  placeholder='picture for playlist' ref={imgRef}/>
             </div>
         )
     })
@@ -36,8 +37,8 @@ let displayForm = ()=>{
         if(res.isConfirmed){
             axios.post('/api/createPlaylist', {
                 userId: state.id,
-                name: name, 
-                img: img
+                name: nameRef.current.value, 
+                img: imgRef.current.value
             })
             .then((response) => {
                
