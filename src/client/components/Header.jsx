@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../state/AuthContext";
 import { useContext } from "react";
 import "../componentStyles/Header.css";
+import NewPlaylist from "./Playlists/NewPlaylist";
 const Header = () => {
   const { dispatch } = useContext(AuthContext);
   const logout = () => {
@@ -32,6 +33,7 @@ const Header = () => {
             <img src={logo} />
             <div>USERSNAMES PLAYLISTS</div>
             <img src={logo} />
+            <NewPlaylist />
           </div>
         </>
       )}

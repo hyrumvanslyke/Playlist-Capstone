@@ -10,7 +10,6 @@ const Playlist = db.define("playlist", {
   },
   name: DataTypes.STRING({ length: 40 }),
   img: DataTypes.STRING,
-  date: DataTypes.DATE,
 });
 
 module.exports = Playlist;
