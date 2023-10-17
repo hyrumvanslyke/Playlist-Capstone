@@ -35,7 +35,7 @@ const Header = () => {
         <div></div>
           <div className="userplaylist">
             <img src={logo} />
-            <div>{state.username} PLAYLISTS</div>
+            <div>{state.username}'s Playlists</div>
             <img src={logo} />
             <NewPlaylist />
           </div>
