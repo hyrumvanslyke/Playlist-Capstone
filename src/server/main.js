@@ -9,6 +9,7 @@ const { register, login, validateToken } = require("./controllers/authCrtl");
 const {
   createPlaylist,
   getPlaylist,
+  addToPlaylist
 } = require("./controllers/PlaylistControl");
 
 app.use(express.json());
@@ -22,6 +23,7 @@ Song.belongsTo(Playlist);
 app.post("/api/createPlaylist", createPlaylist);
 app.post("/api/register", register);
 app.post("/api/login", login);
+app.post('/api/addToPlaylist', addToPlaylist)
 app.get("/api/validate", validateToken);
 app.get("/api/getPlaylist/:id", getPlaylist);
 db.sync();
