@@ -18,7 +18,7 @@ const PlaylistDetails = () => {
       }
 
       const addSongs = (songId) => {
-        axios.post('/api/addToPlaylist', {songId: songId, playlistId: state.id})
+        axios.post('/api/addToPlaylist', {songId: songId, playlistId: playlistId})
         .then((res) => {
           Swal.fire({
             icon: 'success',

@@ -8,8 +8,9 @@ const Song = require("./models/Songs.js");
 const { register, login, validateToken } = require("./controllers/authCrtl");
 const {
   createPlaylist,
-  getPlaylist,
-  addToPlaylist
+  getPlaylists,
+  addToPlaylist,
+  getPlaylist
 } = require("./controllers/PlaylistControl");
 
 app.use(express.json());
@@ -25,7 +26,8 @@ app.post("/api/register", register);
 app.post("/api/login", login);
 app.post('/api/addToPlaylist', addToPlaylist)
 app.get("/api/validate", validateToken);
-app.get("/api/getPlaylist/:id", getPlaylist);
+app.get("/api/getPlaylist/:id", getPlaylists);
+app.get("/api/getPlaylist/:id", getPlaylist)
 db.sync();
 
 ViteExpress.listen(app, 3000, () => {

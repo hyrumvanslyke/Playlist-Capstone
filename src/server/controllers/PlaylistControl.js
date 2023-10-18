@@ -10,7 +10,12 @@ module.exports = {
     });
     res.status(200).send("success");
   },
-  getPlaylist: async (req, res) => {
+  getPlaylist: async (req, res) =>{
+    let {id} = req.params
+    let details = await Playlist.findOne({where: {id: id}, include: Songs })
+    res.status(200).send(details)
+  },
+  getPlaylists: async (req, res) => {
     let { id } = req.params;
     let playlists = await Playlist.findAll({ where: { userId: id } });
     res.status(200).send(playlists);
