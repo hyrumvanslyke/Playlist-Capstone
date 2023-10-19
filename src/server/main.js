@@ -26,7 +26,7 @@ app.post("/api/register", register);
 app.post("/api/login", login);
 app.post('/api/addToPlaylist', addToPlaylist)
 app.get("/api/validate", validateToken);
-app.get("/api/getPlaylist/:id", getPlaylists);
+app.get("/api/getPlaylists/:id", getPlaylists);
 app.get("/api/getPlaylist/:id", getPlaylist)
 db.sync();
 

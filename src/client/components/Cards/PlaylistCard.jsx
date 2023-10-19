@@ -6,7 +6,7 @@ const PlaylistCard = ({ playlist, onClick }) => {
   const { name, img, createdAt } = playlist;
   const navigate = useNavigate();
   const toPlaylist = () => {
-    navigate("/Playlist/:PlaylistId");
+    navigate(`/Playlist/${playlist.id}`);
   };
   const date = new Date(createdAt).toLocaleString().split(",")[0];
 

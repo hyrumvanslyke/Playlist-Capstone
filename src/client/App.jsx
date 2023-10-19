@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate,  } from "react-router-dom";
 import "./App.css";
 import AuthScreen from "./components/Auth/AuthScreen";
 import HomeScreen from "./components/Screens/HomeScreen";

@@ -2,13 +2,15 @@ import React from "react";
 import leftNote from "../../assets/music-left.png";
 import rightNote from "../../assets/music-right.png";
 import SongCard from "../Cards/SongCard";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import SearchBar from "../SearchBar";
 import axios from "axios";
 import { shazamKey } from "../../../../Config";
+import AuthContext from "../../state/AuthContext";
 const HomeScreen = () => {
+  const [playlists, setPlaylists] = useState([])
   const [results, setResults] = useState([]);
-
+  let { state } = useContext(AuthContext);
   const searchShazam = async (query) => {
     try {
       const response = await axios.get(
@@ -26,10 +28,17 @@ const HomeScreen = () => {
       console.error("Error searching Shazam API:", error);
     }
   };
-
+  const getData = () => {
+    axios.get(`/api/getPlaylists/${state.id}`)
+    .then((res) => {
+      setPlaylists(res.data)
+    });
+  };
   const [currentPage, setCurrentPage] = useState(1);
   const songsPerPage = 4;
-
+  useEffect(()=>{
+    getData()
+  }, [])
   const indexOfLastSong = currentPage * songsPerPage;
   const indexOfFirstSong = indexOfLastSong - songsPerPage;
   const currentSong = results.slice(indexOfFirstSong, indexOfLastSong);
@@ -53,7 +62,7 @@ const HomeScreen = () => {
           <SearchBar onSearch={searchShazam} />
           <ul>
             {currentSong.map((result) => (
-              <SongCard song={result} key={result.key}>
+              <SongCard playlists={playlists} song={result} key={result.key}>
                 {result.heading.title}
               </SongCard>
             ))}

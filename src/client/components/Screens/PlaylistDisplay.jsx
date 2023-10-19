@@ -1,15 +1,44 @@
 import React from "react";
 import "../../componentStyles/UserPlaylistsPage.css";
 import SongCard from "../Cards/SongCard";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import leftNote from "../../assets/music-left.png";
 import rightNote from "../../assets/music-right.png";
+import AuthContext from "../../state/AuthContext";
+import axios from "axios";
 const PlaylistDisplay = () => {
-  const songData = [{ id: 1, title: "betty", artist: "yungGravy" }];
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const songsPerPage = 4;
+  const [loading, setLoading] = useState(true)
+
+  const [playListData, setPlaylistData] = useState({});
+
+    const { state } = useContext(AuthContext);
+    const {PlaylistId} = useParams()
+    // const getData = () => {
+    //     axios
+    //       .get(`/api/getPlaylist/${playlistId}`)
+    //       .then((res) => {
+    //         console.log(res.data)
+    //         setDetails(res.data);
+    //         setSongId(res.data.song.id);
+            
+    //       })
+    //       .catch(err=> console.error("Error fetching playlist data:", err))
+    //   }
+    useEffect(()=>{
+      axios.get(`/api/getPlaylist/${PlaylistId}`)
+      
+      .then(res =>{
+        setPlaylistData(res.data) 
+        setLoading(false)
+        console.log(res.data)
+      } 
+      )
+      .catch(err => console.error("Error fetching playlist data:", err))
+    }, [PlaylistId])
 
   const indexOfLastSong = currentPage * songsPerPage;
   const indexOfFirstSong = indexOfLastSong - songsPerPage;
@@ -24,6 +53,9 @@ const PlaylistDisplay = () => {
       <button onClick={() => handlePageChange(num + 1)}> {num + 1} </button>
     );
   });
+  if(loading){
+    return <h2>Loading</h2>
+  }
 
   return (
     <>
@@ -38,7 +70,7 @@ const PlaylistDisplay = () => {
             <img src={leftNote} />
           </div>
           <div className="playlist-cards-container">
-            {currentSong.map((song) => (
+            {playListData.songs.map((song) => (
               <SongCard key={song.id} song={song} />
             ))}
           </div>

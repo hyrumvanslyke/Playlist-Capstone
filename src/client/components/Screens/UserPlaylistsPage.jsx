@@ -13,7 +13,7 @@ const UserPlaylistsPage = () => {
   useEffect(() => {
     let id = state.id;
     axios
-      .get(`/api/getPlaylist/${id}`)
+      .get(`/api/getPlaylists/${id}`)
       .then((res) => setPlaylists(res.data))
       .catch((err) => console.error("Error fetching playlists:", err));
   }, []);

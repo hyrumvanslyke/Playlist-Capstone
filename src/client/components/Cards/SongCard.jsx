@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../componentStyles/SongCard.css";
-
+import axios from "axios";
+import Swal from "sweetalert2";
 const SongCard = ({ song, onAddToPlaylist, playlists }) => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState("");
 
@@ -9,6 +10,19 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
       onAddToPlaylist(id, parseInt(selectedPlaylistId, 10));
     }
   };
+  const addSongs = () => {
+    axios.post('/api/addToPlaylist', {songId: song.id, playlistId: selectedPlaylistId })
+    .then((res) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'You did it!'
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
 
   return (
     <div className="song-card">
@@ -27,13 +41,13 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
             <option value="" disabled selected>
               Select Playlist
             </option>
-            {/* {playlists.map((playlist) => (
+            {playlists.map((playlist) => (
               <option key={playlist.id} value={playlist.id}>
                 {playlist.name}
               </option>
-            ))} */}
+            ))}
           </select>
-          <button onClick={handleAddToPlaylist}>Add to Playlist</button>
+          <button onClick={addSongs}>Add to Playlist</button>
         </div>
       </div>
     </div>

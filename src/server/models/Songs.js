@@ -9,6 +9,9 @@ const Song = db.define("songs", {
     type: DataTypes.INTEGER,
   },
   ShazamId: DataTypes.INTEGER,
+  img: DataTypes.STRING,
+  title: DataTypes.STRING,
+  artist: DataTypes.STRING,
 });
 
 module.exports = Song;
