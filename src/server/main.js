@@ -31,6 +31,5 @@ app.get("/api/getPlaylist/:id", getPlaylist)
 db.sync();
 
 ViteExpress.listen(app, 3000, () => {
-  User.create({ username: "hyrumvan", password: "bigballin" });
   console.log("Server is listening on port 3000...");
 });

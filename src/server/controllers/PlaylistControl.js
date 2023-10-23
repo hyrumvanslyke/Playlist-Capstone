@@ -22,7 +22,7 @@ module.exports = {
   },
   addToPlaylist: async (req, res) =>{
     let {songId, playlistId} = req.body
-    await Songs.create({playlistId: playlistId, songId: songId})
+    await Songs.create(req.body)
     res.status(200).send("Successfully added!")
 
   }

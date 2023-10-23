@@ -11,7 +11,9 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
     }
   };
   const addSongs = () => {
-    axios.post('/api/addToPlaylist', {songId: song.id, playlistId: selectedPlaylistId })
+    let body = {playlistId: selectedPlaylistId, ShazamId: song.key, title: song.heading.title, img: song.images.default, artist: song.heading.subtitle}
+    console.log(body)
+    axios.post('/api/addToPlaylist', body)
     .then((res) => {
       Swal.fire({
         icon: 'success',

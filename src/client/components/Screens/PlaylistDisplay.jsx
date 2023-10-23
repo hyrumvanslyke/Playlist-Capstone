@@ -7,6 +7,7 @@ import leftNote from "../../assets/music-left.png";
 import rightNote from "../../assets/music-right.png";
 import AuthContext from "../../state/AuthContext";
 import axios from "axios";
+import SongDisplayCard from "../Cards/SongDisplayCard";
 const PlaylistDisplay = () => {
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -71,7 +72,7 @@ const PlaylistDisplay = () => {
           </div>
           <div className="playlist-cards-container">
             {playListData.songs.map((song) => (
-              <SongCard key={song.id} song={song} />
+              <SongDisplayCard key={song.id} song={song} />
             ))}
           </div>
           <div className="musicnotes">
