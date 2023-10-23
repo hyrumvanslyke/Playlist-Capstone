@@ -6,3 +6,25 @@
   .form-title{
     color: black;
   }
+  @font-face {
+    font-family: DiscoNectar;
+    src: url(./assets/DiscoNectar.ttf);
+  }
+  @font-face {
+    font-family: Tech;
+    src: url(./assets/Technique.otf) format("opentype");
+  }
+  .Nectar{
+    font-family: DiscoNectar;
+    font-size: 35px;
+  }
+  .Nectar-large{
+    font-family: DiscoNectar;
+    font-size: 105px;
+  }
+  button, select, input{
+    font-family: Tech;
+  }
+  .Tech{
+    font-family: Tech;
+  }

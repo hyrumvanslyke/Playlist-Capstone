@@ -36,7 +36,7 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
         />
       </div>
       <div className="song-info">
-        <h3>{song.heading.title}</h3>
+        <h3 className="Nectar">{song.heading.title}</h3>
         <p>{song.artist}</p>
         <div className="add-to-playlist">
           <select onChange={(e) => setSelectedPlaylistId(e.target.value)}>

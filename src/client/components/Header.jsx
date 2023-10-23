@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header>
-      {location.pathname !== "/UserPlaylists/:UserId" && <img src={logo} />}
+     <img src={logo} />
       {location.pathname === "/" && null}
       {location.pathname === "/home" && (
         <>
@@ -34,21 +34,17 @@ const Header = () => {
         <>
           <div></div>
           <div className="userplaylist">
-            <img src={logo} />
-            <div>{state.username}'s Playlists</div>
-            <img src={logo} />
+            <div className="Nectar-large">{state.username}'s Playlists</div>
             <NewPlaylist />
           </div>
           <div></div>
         </>
       )}
-      {location.pathname === "/Playlist/:PlaylistId" && (
+      {location.pathname.includes("/Playlist") && (
         <>
           <div></div>
-          <div className="userplaylist">
-            <img src={logo} />
-            <div>PLAYLIST NAME</div>
-            <img src={logo} />
+          <div className="userplaylist">        
+            <div className="Nectar-large">{state.currentPlaylist}</div>
           </div>
           <div></div>
         </>

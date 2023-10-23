@@ -16,7 +16,7 @@ const PlaylistDisplay = () => {
 
   const [playListData, setPlaylistData] = useState({});
 
-    const { state } = useContext(AuthContext);
+    const { state, dispatch } = useContext(AuthContext);
     const {PlaylistId} = useParams()
     // const getData = () => {
     //     axios
@@ -33,6 +33,7 @@ const PlaylistDisplay = () => {
       axios.get(`/api/getPlaylist/${PlaylistId}`)
       
       .then(res =>{
+        dispatch({type: 'CHANGE PLAYLIST', payload: res.data.name})
         setPlaylistData(res.data) 
         setLoading(false)
         console.log(res.data)

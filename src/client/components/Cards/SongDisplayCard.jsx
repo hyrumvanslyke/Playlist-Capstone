@@ -12,8 +12,8 @@ const SongDisplayCard = ({song}) => {
             />
           </div>
           <div className="song-info">
-            <h3>{song.title}</h3>
-            <p>{song.artist}</p>
+            <h3 className='Nectar'>{song.title}</h3>
+            <p className='Tech'>{song.artist}</p>
           </div>
         </div>
       );

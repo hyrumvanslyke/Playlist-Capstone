@@ -14,8 +14,8 @@ const PlaylistCard = ({ playlist, onClick }) => {
     <div onClick={toPlaylist} className="playlist-card">
       <img src={img} alt={`${name} Playlist`} className="playlist-image" />
       <div className="playlist-info">
-        <h3>{name}</h3>
-        <p>Date Created: {date}</p>
+        <h3 className="Nectar">{name}</h3>
+        <p className="Tech">Date Created: {date}</p>
       </div>
     </div>
   );

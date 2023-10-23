@@ -6,6 +6,7 @@ const intialState = {
   username: null,
   id: null,
   playlists: [],
+  currentPlaylist: "",
 };
 
 const AuthContext = createContext();
@@ -13,6 +14,8 @@ const AuthContext = createContext();
 const AuthContextProvider = (props) => {
   const reducer = (state, action) => {
     switch (action.type) {
+      case "CHANGE PLAYLIST":
+        return {...state, currentPlaylist: action.payload};
       case "LOGOUT":
         return intialState;
       case "LOGIN":
