@@ -22,7 +22,9 @@ const Header = () => {
         <>
           <div className="Nectar-large">Playlist Unlocked</div>
           <Menu hidden={hidden} toggle={toggle} />
-          <div className="row"><GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} /></div>
+          <div className="row">
+            <GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} />
+          </div>
         </>
       )}
       {location.pathname === "/UserPlaylists/:UserId" && (
@@ -44,7 +46,9 @@ const Header = () => {
             <div className="Nectar-Mid">{state.currentPlaylist}</div>
             <Menu hidden={hidden} toggle={toggle} />
           </div>
-          <div className="row"><GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} /></div>
+          <div className="row">
+            <GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} />
+          </div>
         </>
       )}
     </header>

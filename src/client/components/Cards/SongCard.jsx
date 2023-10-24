@@ -11,20 +11,26 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
     }
   };
   const addSongs = () => {
-    let body = {playlistId: selectedPlaylistId, ShazamId: song.key, title: song.heading.title, img: song.images.default, artist: song.heading.subtitle}
-    console.log(body)
-    axios.post('/api/addToPlaylist', body)
-    .then((res) => {
-      Swal.fire({
-        icon: 'success',
-        title: 'You did it!'
+    let body = {
+      playlistId: selectedPlaylistId,
+      ShazamId: song.key,
+      title: song.heading.title,
+      img: song.images.default,
+      artist: song.heading.subtitle,
+    };
+    console.log(body);
+    axios
+      .post("/api/addToPlaylist", body)
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "You did it!",
+        });
       })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
-
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="song-card">
@@ -49,7 +55,7 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
               </option>
             ))}
           </select>
-          <button onClick={addSongs} >Add to Playlist</button>
+          <button onClick={addSongs}>Add to Playlist</button>
         </div>
       </div>
     </div>

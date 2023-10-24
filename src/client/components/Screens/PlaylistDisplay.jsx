@@ -12,24 +12,24 @@ const PlaylistDisplay = () => {
   const [results, setResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const songsPerPage = 4;
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const [playListData, setPlaylistData] = useState({});
 
-    const { state, dispatch } = useContext(AuthContext);
-    const {PlaylistId} = useParams()
-    useEffect(()=>{
-      axios.get(`/api/getPlaylist/${PlaylistId}`)
-      
-      .then(res =>{
-        dispatch({type: 'CHANGE PLAYLIST', payload: res.data.name})
-        setPlaylistData(res.data) 
-        setLoading(false)
-        console.log(res.data)
-      } 
-      )
-      .catch(err => console.error("Error fetching playlist data:", err))
-    }, [PlaylistId])
+  const { state, dispatch } = useContext(AuthContext);
+  const { PlaylistId } = useParams();
+  useEffect(() => {
+    axios
+      .get(`/api/getPlaylist/${PlaylistId}`)
+
+      .then((res) => {
+        dispatch({ type: "CHANGE PLAYLIST", payload: res.data.name });
+        setPlaylistData(res.data);
+        setLoading(false);
+        console.log(res.data);
+      })
+      .catch((err) => console.error("Error fetching playlist data:", err));
+  }, [PlaylistId]);
 
   const indexOfLastSong = currentPage * songsPerPage;
   const indexOfFirstSong = indexOfLastSong - songsPerPage;
@@ -44,8 +44,8 @@ const PlaylistDisplay = () => {
       <button onClick={() => handlePageChange(num + 1)}> {num + 1} </button>
     );
   });
-  if(loading){
-    return <h2>Loading</h2>
+  if (loading) {
+    return <h2>Loading</h2>;
   }
 
   return (

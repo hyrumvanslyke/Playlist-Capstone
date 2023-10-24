@@ -15,7 +15,7 @@ const AuthContextProvider = (props) => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "CHANGE PLAYLIST":
-        return {...state, currentPlaylist: action.payload};
+        return { ...state, currentPlaylist: action.payload };
       case "LOGOUT":
         return intialState;
       case "LOGIN":

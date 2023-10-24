@@ -7,9 +7,9 @@ import SearchBar from "../SearchBar";
 import axios from "axios";
 import { shazamKey } from "../../../../Config";
 import AuthContext from "../../state/AuthContext";
-import "../../componentStyles/HomeScreen.css"
+import "../../componentStyles/HomeScreen.css";
 const HomeScreen = () => {
-  const [playlists, setPlaylists] = useState([])
+  const [playlists, setPlaylists] = useState([]);
   const [results, setResults] = useState([]);
   let { state } = useContext(AuthContext);
   const searchShazam = async (query) => {
@@ -30,16 +30,15 @@ const HomeScreen = () => {
     }
   };
   const getData = () => {
-    axios.get(`/api/getPlaylists/${state.id}`)
-    .then((res) => {
-      setPlaylists(res.data)
+    axios.get(`/api/getPlaylists/${state.id}`).then((res) => {
+      setPlaylists(res.data);
     });
   };
   const [currentPage, setCurrentPage] = useState(1);
   const songsPerPage = 4;
-  useEffect(()=>{
-    getData()
-  }, [])
+  useEffect(() => {
+    getData();
+  }, []);
   const indexOfLastSong = currentPage * songsPerPage;
   const indexOfFirstSong = indexOfLastSong - songsPerPage;
   const currentSong = results.slice(indexOfFirstSong, indexOfLastSong);

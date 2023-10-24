@@ -10,7 +10,7 @@ const {
   createPlaylist,
   getPlaylists,
   addToPlaylist,
-  getPlaylist
+  getPlaylist,
 } = require("./controllers/PlaylistControl");
 
 app.use(express.json());
@@ -24,10 +24,10 @@ Song.belongsTo(Playlist);
 app.post("/api/createPlaylist", createPlaylist);
 app.post("/api/register", register);
 app.post("/api/login", login);
-app.post('/api/addToPlaylist', addToPlaylist)
+app.post("/api/addToPlaylist", addToPlaylist);
 app.get("/api/validate", validateToken);
 app.get("/api/getPlaylists/:id", getPlaylists);
-app.get("/api/getPlaylist/:id", getPlaylist)
+app.get("/api/getPlaylist/:id", getPlaylist);
 db.sync();
 
 ViteExpress.listen(app, 3000, () => {
