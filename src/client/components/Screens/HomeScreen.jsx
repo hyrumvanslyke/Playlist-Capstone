@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar";
 import axios from "axios";
 import { shazamKey } from "../../../../Config";
 import AuthContext from "../../state/AuthContext";
+import "../../componentStyles/HomeScreen.css"
 const HomeScreen = () => {
   const [playlists, setPlaylists] = useState([])
   const [results, setResults] = useState([]);
@@ -60,13 +61,13 @@ const HomeScreen = () => {
         </div>
         <div className="song-container">
           <SearchBar onSearch={searchShazam} />
-          <ul>
+          <div className="songycard">
             {currentSong.map((result) => (
               <SongCard playlists={playlists} song={result} key={result.key}>
                 {result.heading.title}
               </SongCard>
             ))}
-          </ul>
+          </div>
           <div className="pagination">{buttonDisplay}</div>
         </div>
         <div className="musicnotes">

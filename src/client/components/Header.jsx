@@ -2,51 +2,49 @@ import React from "react";
 import logo from "../assets/noBackLogo.png";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../state/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../componentStyles/Header.css";
 import NewPlaylist from "./Playlists/NewPlaylist";
+import { GiHamburgerMenu } from "react-icons/gi";
+import Menu from "./Menu";
 const Header = () => {
-  const { dispatch } = useContext(AuthContext);
   const { state } = useContext(AuthContext);
-  const logout = () => {
-    localStorage.clear();
-    dispatch({ type: "LOGOUT" });
-  };
   const location = useLocation();
-
+  const [hidden, setHidden] = useState(true);
+  const toggle = () => {
+    setHidden(!hidden);
+  };
   return (
     <header>
-     <img src={logo} />
+      <img src={logo} />
       {location.pathname === "/" && null}
       {location.pathname === "/home" && (
         <>
-          <div></div>
-          <div className="nav-buttons">
-            <Link to="/UserPlaylists/:UserId" className="nav-button">
-              My Playlists
-            </Link>
-            <button onClick={logout}>Logout</button>
-          </div>
-          <div></div>
+          <div className="Nectar-large">Playlist Unlocked</div>
+          <Menu hidden={hidden} toggle={toggle} />
+          <div className="row"><GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} /></div>
         </>
       )}
       {location.pathname === "/UserPlaylists/:UserId" && (
         <>
-          <div></div>
           <div className="userplaylist">
-            <div className="Nectar-large">{state.username}'s Playlists</div>
-            <NewPlaylist />
+            <div className="Nectar-Mid">{state.username}'s Playlists</div>
+
+            <Menu hidden={hidden} toggle={toggle} />
           </div>
-          <div></div>
+          <div className="row">
+            <NewPlaylist />
+            <GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} />
+          </div>
         </>
       )}
       {location.pathname.includes("/Playlist") && (
         <>
-          <div></div>
-          <div className="userplaylist">        
-            <div className="Nectar-large">{state.currentPlaylist}</div>
+          <div className="userplaylist">
+            <div className="Nectar-Mid">{state.currentPlaylist}</div>
+            <Menu hidden={hidden} toggle={toggle} />
           </div>
-          <div></div>
+          <div className="row"><GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} /></div>
         </>
       )}
     </header>

@@ -34,11 +34,6 @@ const UserPlaylistsPage = () => {
   return (
     <>
       <div className="playlists-container">
-        <header className="header">
-          <Link to="/home" className="nav-button">
-            🔙
-          </Link>
-        </header>
         <div className="page-div">
           <div className="musicnotes">
             <img src={leftNote} />

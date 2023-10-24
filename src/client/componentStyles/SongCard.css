@@ -2,7 +2,7 @@
     border: 2px solid #d4af37;
     border-radius: 8px;
     overflow: hidden;
-    width: 300px;
+    width: 40%;
     margin: 10px;
     
   }
@@ -55,5 +55,11 @@
   
   button:hover {
     background-color: #aaa9ad;
+  }
+  .add-to-playlist{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
   }
   

@@ -1,21 +1,19 @@
-import { Route, Routes, Navigate,  } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import AuthScreen from "./components/Auth/AuthScreen";
 import HomeScreen from "./components/Screens/HomeScreen";
 import UserPlaylistsPage from "./components/Screens/UserPlaylistsPage";
 import PlaylistDisplay from "./components/Screens/PlaylistDisplay";
 import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
-import axios from "axios";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import AuthContext from "./state/AuthContext";
 
 function App() {
   const { state } = useContext(AuthContext);
-
+  const location = useLocation();
   return (
     <div className="App">
-      <Header />
+      {location.pathname !== "/" && <Header />}
 
       <Routes>
         <Route

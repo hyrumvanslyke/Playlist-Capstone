@@ -37,7 +37,7 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
       </div>
       <div className="song-info">
         <h3 className="Nectar">{song.heading.title}</h3>
-        <p>{song.artist}</p>
+        <p className="Tech">{song.heading.subtitle}</p>
         <div className="add-to-playlist">
           <select onChange={(e) => setSelectedPlaylistId(e.target.value)}>
             <option value="" disabled selected>
@@ -49,7 +49,7 @@ const SongCard = ({ song, onAddToPlaylist, playlists }) => {
               </option>
             ))}
           </select>
-          <button onClick={addSongs}>Add to Playlist</button>
+          <button onClick={addSongs} >Add to Playlist</button>
         </div>
       </div>
     </div>

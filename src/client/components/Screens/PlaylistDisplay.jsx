@@ -18,17 +18,6 @@ const PlaylistDisplay = () => {
 
     const { state, dispatch } = useContext(AuthContext);
     const {PlaylistId} = useParams()
-    // const getData = () => {
-    //     axios
-    //       .get(`/api/getPlaylist/${playlistId}`)
-    //       .then((res) => {
-    //         console.log(res.data)
-    //         setDetails(res.data);
-    //         setSongId(res.data.song.id);
-            
-    //       })
-    //       .catch(err=> console.error("Error fetching playlist data:", err))
-    //   }
     useEffect(()=>{
       axios.get(`/api/getPlaylist/${PlaylistId}`)
       
@@ -62,11 +51,6 @@ const PlaylistDisplay = () => {
   return (
     <>
       <div className="playlists-container">
-        <header className="header">
-          <Link to="/UserPlaylists/:UserId" className="nav-button">
-            🔙
-          </Link>
-        </header>
         <div className="page-div">
           <div className="musicnotes">
             <img src={leftNote} />
