@@ -34,8 +34,8 @@ const Header = () => {
 
             <Menu hidden={hidden} toggle={toggle} />
           </div>
+          <NewPlaylist />
           <div className="row">
-            <NewPlaylist />
             <GiHamburgerMenu style={{ zIndex: 3 }} size={40} onClick={toggle} />
           </div>
         </>

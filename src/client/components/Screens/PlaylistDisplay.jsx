@@ -1,8 +1,6 @@
 import React from "react";
-import "../../componentStyles/UserPlaylistsPage.css";
-import SongCard from "../Cards/SongCard";
 import { useState, useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import leftNote from "../../assets/music-left.png";
 import rightNote from "../../assets/music-right.png";
 import AuthContext from "../../state/AuthContext";
@@ -55,10 +53,12 @@ const PlaylistDisplay = () => {
           <div className="musicnotes">
             <img src={leftNote} />
           </div>
-          <div className="playlist-cards-container">
+          <div className="song-container">
+            <div className="songycard">
             {playListData.songs.map((song) => (
               <SongDisplayCard key={song.id} song={song} />
             ))}
+            </div>
           </div>
           <div className="musicnotes">
             <img src={rightNote} />
